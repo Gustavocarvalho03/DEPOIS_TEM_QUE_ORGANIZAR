@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java script</title>
+<script src="script.js"></script>
+<style>
+    body{ 
+        background-color: black;
+        color:lime;
+    }
+</style>
+</head>
+<body>
+
+<div id="nome">carlinhos</div>
+
+<input type="text"id="salario" value= "100.0">
+<input type= "text" id="taxa" value="0.4">
+    
+<script>
+const name  = document.getElementById('name');
+let salario  = document.getElementById('salario').value;
+const taxa = document.getElementById('taxa').value;
+    
+let x = parseFloat(salario) * parseFloat(taxa);
+    alert(x);
+    
+    function desconto(valor,taxa){
+    return valor*(1.0-taxa/100.0)
+    }
+    let saida= desconto(8000.0,10.0)
+    alert(saida);
+</script>
+    
+  
+
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+ <!Doctype html>
+<html lang="pt-br">
+
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+        <title>Exercicio 49</title>
+</head>
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    }
+    body {
+    background-color: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    height: 100vh;
+    }
+    #container {
+    background-color: goldenrod;
+    }
+    #entrada-dados {
+    background-color: yellowgreen;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+    #entrada-dados input {
+    height: 30px;
+    width: 250px;
+    font-size: medium;
+    text-align: center;
+    }
+    #processamento-dados {
+    width: 300px;
+    height: 50px;
+    font-size: medium;
+    }
+    #saida-dados1 {
+    background-color: yellowgreen;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    #saida-dados2 {
+    background-color: yellowgreen;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    #saida-dados3 {
+    background-color: yellowgreen;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    </style>
+
+<body>
+
+  <div id="container">
+
+    <h1>Calculadora de Descontos INSS</h1>
+
+    <div id="entrada-dados">
+
+        <p><input type="text" class="salario" placeholder="Digite o Salário Bruto"></p>
+                       
+    </div>
+
+    <p><button class="processamento-dados">Verificar</button></p>
+
+    <p class="saida-dados1">Salário Líquido: </p>
+    <p class="saida-dados2">Descontos INSS: </p>
+    <p class="saida-dados3">Desconto IRRF: </p>
+
+    <script>
+      const salBruto = document.querySelector(".salario");
+      const saidaSalario = document.querySelector(".saida-dados1");
+      const INSS = document.querySelector(".saida-dados2");
+      const IRRF = document.querySelector(".saida-dados3");
+      const bt = document.querySelector(".processamento-dados");
+
+      const f1 = 1212.00;
+      const f2 = 2427.35;
+      const f3 = 3641.03;
+      const f4 = 7087.22;
+
+      const ir1 = 1903.98;
+      const ir2 = 2826.65;
+      const ir3 = 3751.05;
+      const ir4 = 4664.68;
+
+      const calcDesconto = function (e1 ,e2){
+        totaldescontado = e1 * e2 / 100.0;
+        return totaldescontado;
+      }
+
+      const calcIRRF = function (salario) {
+        let descontoIRRF = 0;
+
+        if (salario <= f1) {
+          descontoIRRF = calcDesconto(f1, 7,5);
+
+        } else if (salario > f1 && salario <= f2) {
+          descontoIRRF = calcDesconto(f1,7,5);
+          descontoIRRF += calcDesconto(f2, 9.0);
+
+        } else if (salario > f2 && salario <= f3) {
+          descontoIRRF = calcDesconto(f1,7,5);
+          descontoIRRF += calcDesconto(f2, 9.0);
+          descontoIRRF += calcDesconto(f3, 12.0);
+
+        } else if (salario > f3 && salario <= f4 ) {
+          descontoIRRF = calcDesconto(f1,7,5);
+          descontoIRRF += calcDesconto(f2, 9.0);
+          descontoIRRF += calcDesconto(f3, 12.0);
+          descontoIRRF += calcDesconto(f4, 14.0);
+        }
+        else{
+
+        }
+
+        const aliquotaEfetiva = (descontoIRRF / salario) * 100;
+
+        saidaSalario.innerHTML = `Salário líquido: R$${ salario - descontoIRRF.toFixed(2)}`;
+
+        IRRF.innerHTML = `Desconto IRRF: R$${descontoIRRF.toFixed(2)}, (Aliquota Efetiva: ${aliquotaEfetiva.toFixed(2)}%.)`;
+      };
+
+      bt.addEventListener("click", function () {
+        const salarioBruto = parseFloat(salBruto.value);
+        let descontoINSS = 0;
+
+        if (salarioBruto <= ir1) {
+          descontoINSS = calcDesconto(ir1, 0.0);
+        } 
+
+        else if (salarioBruto > ir1 && salarioBruto <= ir2) {
+          descontoINSS = calcDesconto(ir1, 0.0);
+          descontoINSS += calcDesconto(salarioBruto - ir1, 7,5);
+        } 
+
+        else if (salarioBruto > ir2 && salarioBruto <= ir3) {
+          descontoINSS = calcDesconto(ir1, 0.0);
+          descontoINSS += calcDesconto(ir2 - ir1, 7,5);
+          descontoINSS += calcDesconto(salarioBruto - ir2, 15.0);
+        } 
+
+        else if (salarioBruto > ir3 && salarioBruto <= ir4) {
+          descontoINSS = calcDesconto(ir1, 0.0);
+          descontoINSS += calcDesconto(ir2 - ir1, 7,5);
+          descontoINSS += calcDesconto(ir3 - ir2, 15.0);
+          descontoINSS += calcDesconto(salarioBruto - ir3, 22.5);
+        } 
+
+        else if(salarioBruto > ir4) {
+          descontoINSS = calcDesconto(ir1, 0.0);
+          descontoINSS += calcDesconto(ir2 - ir1, 7,5);
+          descontoINSS += calcDesconto(ir3 - ir2, 15.0);
+          descontoINSS += calcDesconto(ir4 - ir3, 22.5);
+        }
+
+        const aliquotaEfetiva = (descontoINSS / salarioBruto) * 100;
+        INSS.innerHTML = `Desconto INSS: R$${descontoINSS.toFixed(2)}, (Aliquota Efetiva: ${aliquotaEfetiva.toFixed(2)}%.)`;
+
+        calcIRRF(salarioBruto - descontoINSS);
+        
+      });
+
+    </script>
+  </body>
+   
+</html>

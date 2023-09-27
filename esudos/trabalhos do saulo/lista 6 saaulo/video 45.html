@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Insira o horario atual: </div>
+    <input type="text" id="hora" placeholder="0 a 23" />
+
+    <button id="btn">Checar</button>
+    <p id="saida"></p>
+    <script>
+        let hora = document.getElementById("hora");
+        let saida = document.getElementById("saida");
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", function () {
+            let rhora = parseInt(hora.value);
+            if (!(rhora >= 0 && rhora <= 23)) {
+                saida.innerHTML = "Escolha um número entre 0 e 23";
+                return;
+            }
+
+            else if (rhora >= 0 && rhora <= 5) saida.innerHTML = "Madrugada";
+            else if (rhora >= 6 && rhora <= 11) saida.innerHTML = "Manhã";
+            else if (rhora >= 12 && rhora <= 17) saida.innerHTML = "Tarde";
+            else saida.innerHTML = "Noite";
+        });
+    </script>
+</body>
+
+</html>

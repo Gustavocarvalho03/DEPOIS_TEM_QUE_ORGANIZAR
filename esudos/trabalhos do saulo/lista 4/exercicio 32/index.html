@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="insira um valor " id="inputValor">
+    <button onclick="calcular()">calcular </button>
+<Script>
+    function calcular (){
+        var valor = document.getElementById('inputValor').value;
+        
+        if(valor >= 200){
+                notas200 = Math.floor(valor / 200);
+                document.write('notas de 200: '+notas200+'<br>');
+                valor = valor % 200
+            }
+    
+    if(valor >= 100){
+        notas100 = math.floor(valor/ 100);
+        document.write('notas de 100: '+notas100+'<br>')
+        valor = valor % 100
+}
+if(valor >= 50){
+                notas50 = Math.floor(valor / 50);
+                document.write('notas de 50: '+ notas50+'<br>');
+                valor = valor % 50}
+                
+                
+                if(valor >= 20){
+                notas20 = Math.floor(valor / 20);
+                document.write('notas de 20: '+notas20+'<br>');
+                valor = valor % 20
+            }
+            if(valor >= 10){
+                notas10 = Math.floor(valor / 10);
+                document.write('notas de 10: '+notas10+'<br>');
+                valor = valor % 10}
+                
+                if(valor >= 5){
+                notas5 = Math.floor(valor / 5);
+                document.write('notas de 5: '+notas5+'<br>');
+                valor = valor % 5
+            }
+            if(valor >= 2){
+                notas2 = Math.floor(valor / 2);
+                document.write('notas de 2: '+notas2+'<br>');
+                valor = valor % 2
+            }
+                document.write('notas de 1: '+valor)
+    }
+</script>
+</body>
+
+</html>

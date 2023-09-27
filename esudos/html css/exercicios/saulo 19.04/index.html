@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promoção de Peças de Automóvel</title>
+  </head>
+  <body>
+    <h1>Promoção de Peças de Automóvel</h1>
+    <form>
+      <label for="valor-peca">Valor da Peça:</label>
+      <input type="number" id="valor-peca" name="valor-peca"><br><br>
+      <label for="quantidade">Quantidade Comprada:</label>
+      <input type="number" id="quantidade" name="quantidade"><br><br>
+      <input type="button" value="Calcular Desconto" onclick="calcularDesconto()">
+    </form>
+    <br><br>
+    <div id="resultados"></div>
+    <script>
+      function calcularDesconto() {
+        var valorPeca = parseFloat(document.getElementById("valor-peca").value);
+        var quantidade = parseInt(document.getElementById("quantidade").value);
+        var desconto = 0;
+        var total = valorPeca * quantidade;
+        var mensagem = "";
+        if (quantidade >= 5 && quantidade < 10) {
+          desconto = 0.05;
+          total = total - (total * desconto);
+          mensagem = "Comprando " + quantidade + " peças, você recebe um desconto de 5%, totalizando R$ " + total.toFixed(2);
+        } else if (quantidade >= 10) {
+          desconto = 0.1;
+          total = total - (total * desconto);
+          mensagem = "Comprando " + quantidade + " peças, você recebe um desconto de 10%, totalizando R$ " + total.toFixed(2);
+        } else {
+          mensagem = "Comprando " + quantidade + " peça(s), você não recebe nenhum desconto, totalizando R$ " + total.toFixed(2);
+        }
+        document.getElementById("resultados").innerHTML = mensagem;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>calculadora de comissao</h1>
+<form>
+  <label for="salario">Salario fixo:</label>
+<input type="text" id= "salario" name = "salario" value="3000.00"><br></br>
+<label for="vendas">Total de vendas </label>
+<input type="text" id="vendas" name="vendas"><br></br>
+<button type="button"onclick="calcularcomissao()">Calcular</button>
+
+</form>
+<p id="comissao"></p>
+<script>
+
+function calcularcomissao(){
+  const salario = parseFloat(document.getElementById("salario").value);
+  const vendas = parseFloat(document.getElementById("vendas").value);
+ 
+  const limite1 = 100000;
+  const limite2 = 200000;
+   
+  let comissao = 0;
+  if (vendas > limite1){
+    comissao=(limite2-limite1)*0.0025+(vendas-limite2)*0.003;
+  }else if (vendas > limite1){
+    comissao = (valor-limite1)*0.0025;
+  }
+
+  const total = salario + comissao;
+  document.getElementById("comissao").textContent= " A comissao é de R$"+comissao.toFixed(2);" e o salario total é de R$"+total.toFixed(2)
+
+
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+  

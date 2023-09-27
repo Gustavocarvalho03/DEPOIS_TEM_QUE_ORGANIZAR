@@ -1,0 +1,99 @@
+ <!Doctype html>
+<html lang="pt-br">
+
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+        <title>Exercicio 57</title>
+</head>
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    }
+    body {
+    background-color: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    height: 100vh;
+    }
+    #container {
+    background-color: goldenrod;
+    }
+    #entrada-dados {
+    background-color: yellowgreen;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+    #entrada-dados input {
+    height: 30px;
+    width: 250px;
+    font-size: medium;
+    text-align: center;
+    }
+    #processamento-dados {
+    width: 300px;
+    height: 50px;
+    font-size: medium;
+    }
+    #saida-dados {
+    background-color: yellowgreen;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    </style>
+
+<body>
+
+  <div id="container">
+
+    <h1>Exibe Maior e Menor número inserido</h1>
+
+    <div id="entrada-dados">
+        <p>
+            <input type="number" id="numero" placeholder="Número">
+        </p>         
+    </div>
+
+    <p><button id="processamento-dados1" >Adicionar</button></p>
+    <p><button id="processamento-dados2" >verificar</button></p>
+
+    <p id="saida-dados"> </p>
+
+    <script>
+
+        const add = document.querySelector("#processamento-dados1");
+        const res = document.querySelector("#processamento-dados2");
+        let num = document.querySelector("#numero");
+        let out = document.querySelector("#saida-dados");
+
+        let n = 0;
+        let strnum = new Array(n);
+        add.addEventListener("click", ()=>{
+            strnum[n] = parseFloat(num.value);
+            n++;
+        });
+
+        res.addEventListener("click", ()=>{
+            let most = 0;
+            let minus = strnum[0];
+            for (let i = 0; i<n; i++){
+                if( most < strnum[i]) most = strnum[i];
+                if( minus > strnum[i]) minus = strnum[i];
+            }
+            out.innerHTML = "Maior Número: "+most+" | Menor Número: "+minus;
+        });
+     
+    </script>
+  </body>
+   
+</html>

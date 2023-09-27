@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        background-color: black;
+        color: aliceblue;
+    }
+</style>
+</head>
+
+<body>
+<div id="nome">lucro</div>
+
+
+<input type="text" id="quantidade" value="4500.0">
+<input type="text" id="kg" value="4.0">
+<input type="text" id="dolar"value="3.0">
+<input type="text"id="imposto"value="15.0">
+<input type="text" id="cotacao"value="5.0">
+
+
+
+<script>
+const name= document.getElementById('nome')
+let valor= document.getElementById('quantidade').value;
+const kg = document.getElementById('kg').value;
+let dolar = document.getElementById('dolar').value;
+const imposto= document.getElementById('imposto').value;
+const cotacao = document.getElementById('cotacao') .value;
+
+let x= parseFloat(valor) *  parseFloat(kg);
+ alert(x);
+ let y= parseFloat(x) *  parseFloat(dolar);
+ alert(y);
+let z=parseFloat(y) * parseFloat(cotacao);
+alert(z)
+
+function lucro ( z,imposto){
+    return z*(1.0-imposto/100)
+
+}
+let saida= lucro(270000.0,15.0)
+alert(saida);
+
+
+
+</script>
+
+</body>
+</html>
